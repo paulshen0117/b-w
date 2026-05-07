@@ -1,0 +1,1780 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>福智學校校友會 · BWS Alumni Association</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f3e8c8;
+        --cream-soft: #ede0bb;
+        --cream-deep: #e6d6a8;
+        --ink: #2b2a23;
+        --ink-soft: #4a4738;
+        --gold: #b08a3e;
+        --gold-deep: #8c6c2a;
+        --green: #3a4a2c;
+        --green-deep: #2a361f;
+        --rule: rgba(60, 50, 25, 0.18);
+        --shadow: 0 20px 60px -30px rgba(60, 50, 25, 0.45);
+        --serif-zh: "Noto Serif TC", "Songti TC", serif;
+        --serif-en: "Cormorant Garamond", "Times New Roman", serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--serif-zh);
+        background: var(--cream);
+        color: var(--ink);
+        line-height: 1.8;
+        overflow-x: hidden;
+        background-image:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(176, 138, 62, 0.06) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 60%,
+            rgba(58, 74, 44, 0.05) 0%,
+            transparent 40%
+          );
+      }
+
+      /* ───────── Navigation ───────── */
+      nav.top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(243, 232, 200, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--rule);
+        transition: all 0.4s ease;
+      }
+      nav.top .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 14px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      nav.top .brand {
+        font-family: var(--serif-en);
+        font-size: 14px;
+        letter-spacing: 0.3em;
+        color: var(--green-deep);
+        font-weight: 500;
+      }
+      nav.top .brand span {
+        color: var(--gold);
+      }
+      nav.top ul {
+        list-style: none;
+        display: flex;
+        gap: 28px;
+      }
+      nav.top a {
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        position: relative;
+        padding: 6px 2px;
+        transition: color 0.3s;
+      }
+      nav.top a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.4s ease;
+      }
+      nav.top a:hover {
+        color: var(--gold-deep);
+      }
+      nav.top a:hover::after,
+      nav.top a.active::after {
+        width: 100%;
+      }
+      nav.top a.active {
+        color: var(--gold-deep);
+      }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: var(--green-deep);
+        cursor: pointer;
+      }
+
+      /* ───────── Brand / Logo ───────── */
+      .brand-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .brand-logo {
+        height: 36px;
+        width: 36px;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+      }
+      .brand-logo[data-broken] {
+        display: none;
+      }
+
+      /* ───────── Hero ───────── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 24px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("images/cover.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.18;
+        z-index: 0;
+        filter: sepia(0.4) saturate(0.8);
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+      }
+
+      .hero-logo {
+        display: block;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 28px;
+        object-fit: cover;
+        border-radius: 24px;
+      }
+      .hero-logo[data-broken] {
+        display: none;
+      }
+
+      .since-badge {
+        position: absolute;
+        top: 100px;
+        right: 8%;
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        border: 1.5px solid var(--gold);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-deep);
+        font-family: var(--serif-en);
+        transform: rotate(-8deg);
+        background: rgba(243, 232, 200, 0.5);
+      }
+      .since-badge .lbl {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+      }
+      .since-badge .yr {
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 1;
+        margin: 2px 0;
+      }
+      .since-badge .zh {
+        font-size: 9px;
+        letter-spacing: 0.2em;
+      }
+
+      .leaf-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 0 auto 22px;
+        color: var(--gold);
+      }
+      .leaf-divider .line {
+        width: 60px;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.5;
+      }
+      .leaf-divider svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hero .est {
+        font-family: var(--serif-en);
+        font-size: 13px;
+        letter-spacing: 0.45em;
+        color: var(--ink-soft);
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-family: var(--serif-zh);
+        font-size: clamp(48px, 7vw, 88px);
+        font-weight: 700;
+        color: var(--green-deep);
+        letter-spacing: 0.08em;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .hero .en-title {
+        font-family: var(--serif-en);
+        font-size: clamp(18px, 2.2vw, 26px);
+        letter-spacing: 0.35em;
+        color: var(--gold-deep);
+        margin-bottom: 38px;
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+
+      .hero .subtitle {
+        font-size: 16px;
+        color: var(--ink-soft);
+        line-height: 2.2;
+        letter-spacing: 0.1em;
+        margin-bottom: 44px;
+      }
+
+      .welcome-card {
+        border: 1px solid var(--rule);
+        background: rgba(255, 252, 240, 0.5);
+        padding: 28px 32px;
+        text-align: left;
+        margin-top: 30px;
+        position: relative;
+      }
+      .welcome-card .tag {
+        font-family: var(--serif-en);
+        font-size: 13px;
+        letter-spacing: 0.45em;
+        color: var(--gold-deep);
+        font-weight: 500;
+        margin-right: 10px;
+      }
+      .welcome-card .tag::after {
+        content: "·";
+        margin-left: 14px;
+        color: var(--ink-soft);
+      }
+      .welcome-card p {
+        display: inline;
+        font-size: 15px;
+        color: var(--ink-soft);
+        line-height: 2;
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--serif-en);
+        font-size: 11px;
+        letter-spacing: 0.4em;
+        color: var(--gold-deep);
+        opacity: 0.7;
+        animation: bob 2.4s ease-in-out infinite;
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, 8px);
+        }
+      }
+
+      /* ───────── Sections ───────── */
+      section.chapter {
+        padding: 110px 24px;
+        max-width: 1080px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .chapter-head {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .chapter-head .num {
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.5em;
+        color: var(--gold-deep);
+        margin-bottom: 14px;
+        font-weight: 500;
+      }
+      .chapter-head h2 {
+        font-family: var(--serif-zh);
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 600;
+        color: var(--green-deep);
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+      }
+      .chapter-head .en {
+        font-family: var(--serif-en);
+        font-size: 14px;
+        letter-spacing: 0.35em;
+        color: var(--ink-soft);
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+      .chapter-head .en::before,
+      .chapter-head .en::after {
+        content: "—";
+        margin: 0 14px;
+        color: var(--gold);
+      }
+      .chapter-head blockquote {
+        margin-top: 22px;
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 15px;
+        letter-spacing: 0.06em;
+      }
+
+      /* ─── Chapter 1 ─── */
+      .story-text {
+        max-width: 760px;
+        margin: 0 auto 60px;
+        font-size: 16px;
+        line-height: 2.2;
+        color: var(--ink-soft);
+        text-indent: 2em;
+      }
+      .story-text p + p {
+        margin-top: 18px;
+      }
+      .story-text strong {
+        color: var(--green-deep);
+        font-weight: 600;
+      }
+
+      .purpose-divider {
+        text-align: center;
+        margin: 50px 0 36px;
+        font-family: var(--serif-en);
+        font-size: 13px;
+        letter-spacing: 0.4em;
+        color: var(--gold-deep);
+      }
+      .purpose-divider::before,
+      .purpose-divider::after {
+        content: "";
+        display: inline-block;
+        width: 60px;
+        height: 1px;
+        background: var(--gold);
+        vertical-align: middle;
+        margin: 0 18px;
+      }
+
+      .purpose-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+      }
+      .purpose-card {
+        background: rgba(255, 252, 240, 0.4);
+        padding: 38px 30px;
+        transition: all 0.4s ease;
+        cursor: default;
+      }
+      .purpose-card:hover {
+        background: rgba(255, 252, 240, 0.85);
+        transform: translateY(-2px);
+      }
+      .purpose-card .num {
+        font-family: var(--serif-en);
+        font-size: 28px;
+        color: var(--gold);
+        font-weight: 400;
+        margin-bottom: 14px;
+        letter-spacing: 0.05em;
+      }
+      .purpose-card h3 {
+        font-size: 22px;
+        color: var(--green-deep);
+        margin-bottom: 6px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+      .purpose-card .en-sub {
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.3em;
+        color: var(--gold-deep);
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+      .purpose-card p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        line-height: 1.9;
+      }
+
+      /* ─── Chapter 2: Activities ─── */
+      .photo-frame {
+        position: relative;
+        margin-bottom: 50px;
+        overflow: hidden;
+        border: 1px solid var(--rule);
+        background: var(--cream-soft);
+        aspect-ratio: 16 / 9;
+        cursor: pointer;
+        transition: transform 0.5s ease;
+      }
+      .photo-frame:hover {
+        transform: scale(1.005);
+      }
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+      .photo-frame:hover img {
+        transform: scale(1.04);
+      }
+      .photo-frame .placeholder-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink-soft);
+        font-style: italic;
+        font-size: 17px;
+        letter-spacing: 0.1em;
+        background: repeating-linear-gradient(
+          135deg,
+          var(--cream-soft) 0px,
+          var(--cream-soft) 12px,
+          var(--cream-deep) 12px,
+          var(--cream-deep) 13px
+        );
+        pointer-events: none;
+      }
+      .photo-frame .placeholder-text small {
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        color: var(--gold-deep);
+        margin-bottom: 12px;
+        font-style: normal;
+        font-family: var(--serif-en);
+      }
+      .photo-frame img:not([src=""]):not([data-broken]) ~ .placeholder-text {
+        display: none;
+      }
+
+      .activity {
+        display: block;
+        padding: 26px 40px 26px 4px;
+        border-bottom: 1px dashed var(--rule);
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.35s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .activity:hover {
+        padding-left: 16px;
+        background: rgba(255, 252, 240, 0.45);
+      }
+      .activity:active {
+        background: rgba(255, 252, 240, 0.75);
+      }
+      .activity-arrow {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        width: 18px;
+        height: 18px;
+        color: var(--gold);
+        opacity: 0.45;
+        transform: translateY(-50%);
+        transition: all 0.4s ease;
+        pointer-events: none;
+      }
+      .activity:hover .activity-arrow {
+        opacity: 1;
+        color: var(--gold-deep);
+        transform: translateY(-50%) translateX(5px);
+      }
+      .activity-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .activity-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+      }
+      .activity-icon {
+        width: 22px;
+        height: 22px;
+        color: var(--gold);
+        flex-shrink: 0;
+      }
+      .activity-title h3 {
+        font-size: 22px;
+        color: var(--green-deep);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+      .badge {
+        display: inline-block;
+        background: var(--gold-deep);
+        color: var(--cream);
+        font-size: 11px;
+        padding: 3px 10px;
+        letter-spacing: 0.2em;
+        font-weight: 500;
+      }
+      .badge.wine {
+        background: var(--green-deep);
+      }
+      .badge.olive {
+        background: #6b7a3a;
+      }
+      .activity-meta {
+        font-family: var(--serif-en);
+        font-size: 13px;
+        letter-spacing: 0.25em;
+        color: var(--gold-deep);
+        text-transform: uppercase;
+      }
+      .activity-en {
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.3em;
+        color: var(--ink-soft);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        margin-left: 34px;
+      }
+      .activity-desc {
+        font-size: 15px;
+        color: var(--ink-soft);
+        line-height: 2;
+        margin-left: 34px;
+      }
+
+      .photo-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 50px;
+      }
+      .photo-row .photo-frame {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 0;
+      }
+
+      /* ─── Chapter 3: Limited ─── */
+      .product-card {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 30px;
+        align-items: center;
+        padding: 30px;
+        background: rgba(255, 252, 240, 0.45);
+        border: 1px solid var(--rule);
+        transition: all 0.4s ease;
+      }
+      .product-card:hover {
+        background: rgba(255, 252, 240, 0.85);
+        box-shadow: var(--shadow);
+      }
+      .product-card .photo-frame {
+        aspect-ratio: 1;
+        margin-bottom: 0;
+      }
+      .product-info .badge {
+        margin-bottom: 14px;
+      }
+      .product-info h3 {
+        font-size: 26px;
+        color: var(--green-deep);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+      }
+      .product-info .en {
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.3em;
+        color: var(--gold-deep);
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+      .product-info p {
+        color: var(--ink-soft);
+        line-height: 2;
+        font-size: 15px;
+      }
+      .more-soon {
+        text-align: center;
+        margin-top: 36px;
+        font-style: italic;
+        color: var(--ink-soft);
+        font-size: 14px;
+        letter-spacing: 0.1em;
+      }
+
+      /* ─── Chapter 4: People ─── */
+      .people-table {
+        border: 1px solid var(--rule);
+        background: rgba(255, 252, 240, 0.45);
+      }
+      .person-row {
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        align-items: center;
+        padding: 28px 30px;
+        border-bottom: 1px dashed var(--rule);
+        gap: 24px;
+        transition: background 0.3s;
+      }
+      .person-row:last-child {
+        border-bottom: none;
+      }
+      .person-row:hover {
+        background: rgba(255, 252, 240, 0.85);
+      }
+      .person-row .num {
+        font-family: var(--serif-en);
+        font-size: 14px;
+        color: var(--gold);
+        letter-spacing: 0.15em;
+      }
+      .person-info .role {
+        font-size: 13px;
+        color: var(--ink-soft);
+        letter-spacing: 0.2em;
+        margin-bottom: 4px;
+      }
+      .person-info .name {
+        font-size: 22px;
+        color: var(--green-deep);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+      .person-info .name.tbd {
+        color: var(--ink-soft);
+        font-weight: 400;
+      }
+      .person-row .en-role {
+        font-family: var(--serif-en);
+        font-size: 14px;
+        letter-spacing: 0.25em;
+        color: var(--gold-deep);
+        text-transform: capitalize;
+      }
+      .board-link {
+        text-align: center;
+        margin-top: 30px;
+        font-style: italic;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+      .board-link a {
+        color: var(--gold-deep);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--gold);
+        padding-bottom: 1px;
+      }
+      .board-link a:hover {
+        color: var(--green-deep);
+      }
+
+      /* ─── Chapter 5: Join ─── */
+      .join-section {
+        background: rgba(255, 252, 240, 0.4);
+      }
+      .join-card {
+        border: 1px solid var(--rule);
+        padding: 50px 40px;
+        max-width: 720px;
+        margin: 0 auto;
+        background: rgba(255, 252, 240, 0.6);
+        position: relative;
+      }
+      .join-card::before,
+      .join-card::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        background: var(--cream);
+      }
+      .join-card::before {
+        top: -8px;
+        left: 30px;
+      }
+      .join-card::after {
+        bottom: -8px;
+        right: 30px;
+      }
+
+      .join-title {
+        text-align: center;
+        margin-bottom: 36px;
+        font-family: var(--serif-en);
+        font-size: 13px;
+        letter-spacing: 0.5em;
+        color: var(--gold-deep);
+      }
+      .join-title::before,
+      .join-title::after {
+        content: "·";
+        margin: 0 18px;
+        color: var(--ink-soft);
+      }
+      .join-list {
+        list-style: none;
+        counter-reset: item;
+      }
+      .join-list li {
+        counter-increment: item;
+        padding: 18px 0;
+        padding-left: 56px;
+        position: relative;
+        border-bottom: 1px dashed var(--rule);
+        font-size: 16px;
+        color: var(--ink-soft);
+        transition: all 0.3s;
+      }
+      .join-list li:last-child {
+        border-bottom: none;
+      }
+      .join-list li:hover {
+        padding-left: 64px;
+        color: var(--green-deep);
+      }
+      .join-list li::before {
+        content: counter(item, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: 18px;
+        font-family: var(--serif-en);
+        font-size: 14px;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        font-weight: 500;
+      }
+
+      .cta-button {
+        display: block;
+        margin: 36px auto 0;
+        text-align: center;
+        background: var(--green-deep);
+        color: var(--cream);
+        padding: 22px 40px;
+        text-decoration: none;
+        font-size: 16px;
+        letter-spacing: 0.4em;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-button .en {
+        display: block;
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.4em;
+        margin-top: 8px;
+        color: var(--gold);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .cta-button:hover {
+        background: var(--green);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      /* ─── Chapter 6: Contact ─── */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .contact-card {
+        border: 1px solid var(--rule);
+        padding: 28px 30px;
+        background: rgba(255, 252, 240, 0.45);
+        transition: all 0.4s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      .contact-card:hover {
+        background: rgba(255, 252, 240, 0.9);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+      .contact-card .icon {
+        width: 28px;
+        height: 28px;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .contact-card .label {
+        font-family: var(--serif-en);
+        font-size: 12px;
+        letter-spacing: 0.4em;
+        color: var(--ink-soft);
+        margin-bottom: 8px;
+      }
+      .contact-card h3 {
+        font-size: 20px;
+        color: var(--green-deep);
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      .contact-card p {
+        font-size: 14px;
+        color: var(--ink-soft);
+        word-break: break-all;
+      }
+
+      .note-bar {
+        border: 1px dashed var(--rule);
+        padding: 16px 24px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--ink-soft);
+        letter-spacing: 0.08em;
+      }
+      .note-bar .lbl {
+        font-family: var(--serif-en);
+        font-size: 11px;
+        letter-spacing: 0.4em;
+        color: var(--gold-deep);
+        margin-right: 14px;
+      }
+
+      .closing {
+        text-align: center;
+        padding: 60px 24px;
+      }
+      .closing .leaves {
+        color: var(--gold);
+        margin-bottom: 28px;
+        font-size: 14px;
+        letter-spacing: 0.5em;
+      }
+      .closing h3 {
+        font-size: 22px;
+        color: var(--green-deep);
+        margin-bottom: 18px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+      }
+      .closing p {
+        color: var(--ink-soft);
+        line-height: 2.4;
+        font-style: italic;
+        font-size: 15px;
+      }
+      .closing .bon {
+        font-family: var(--serif-en);
+        font-size: 14px;
+        letter-spacing: 0.5em;
+        color: var(--gold-deep);
+        margin-top: 30px;
+        text-transform: uppercase;
+      }
+      .closing .bon::before,
+      .closing .bon::after {
+        content: "—";
+        margin: 0 14px;
+        color: var(--gold);
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 24px;
+        border-top: 1px solid var(--rule);
+        font-size: 12px;
+        color: var(--ink-soft);
+        letter-spacing: 0.1em;
+      }
+
+      /* ───────── Lightbox ───────── */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(43, 42, 35, 0.92);
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+        backdrop-filter: blur(6px);
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+      }
+      .lightbox .caption {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--cream);
+        font-style: italic;
+        letter-spacing: 0.1em;
+        font-size: 14px;
+      }
+
+      /* ───────── Reveal animation ───────── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ───────── Mobile ───────── */
+      @media (max-width: 768px) {
+        nav.top ul {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: var(--cream);
+          flex-direction: column;
+          gap: 0;
+          padding: 12px 0;
+          border-bottom: 1px solid var(--rule);
+        }
+        nav.top ul.open {
+          display: flex;
+        }
+        nav.top ul li {
+          border-bottom: 1px dashed var(--rule);
+        }
+        nav.top ul li:last-child {
+          border-bottom: none;
+        }
+        nav.top a {
+          display: block;
+          padding: 14px 32px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+
+        .since-badge {
+          width: 64px;
+          height: 64px;
+          right: 5%;
+          top: 110px;
+        }
+        .since-badge .yr {
+          font-size: 18px;
+        }
+        .since-badge .lbl {
+          font-size: 9px;
+        }
+        .since-badge .zh {
+          font-size: 8px;
+        }
+        .hero {
+          align-items: flex-start;
+          padding: 120px 20px 60px;
+          min-height: auto;
+        }
+        .hero-logo {
+          width: 120px;
+          height: 120px;
+          margin-bottom: 22px;
+        }
+        section.chapter {
+          padding: 80px 20px;
+        }
+        .purpose-grid {
+          grid-template-columns: 1fr;
+        }
+        .photo-row {
+          grid-template-columns: 1fr;
+        }
+        .product-card {
+          grid-template-columns: 1fr;
+        }
+        .product-card .photo-frame {
+          max-width: 100%;
+        }
+        .person-row {
+          grid-template-columns: 40px 1fr;
+          gap: 16px;
+          padding: 22px 20px;
+        }
+        .person-row .en-role {
+          grid-column: 2;
+          font-size: 12px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .join-card {
+          padding: 36px 22px;
+        }
+        .activity-en,
+        .activity-desc {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ━━━━━━━━━━━━━━━━━━━━━ NAV ━━━━━━━━━━━━━━━━━━━━━ -->
+    <nav class="top">
+      <div class="wrap">
+        <a class="brand-wrap" href="#">
+          <img
+            class="brand-logo"
+            src="images/logo.png"
+            alt="福智校友會"
+            onerror="this.dataset.broken = true"
+          />
+          <div class="brand">BWS<span> · </span>ALUMNI</div>
+        </a>
+        <button class="menu-toggle" aria-label="menu">☰</button>
+        <ul id="navmenu">
+          <li><a href="#story" class="active">緣起</a></li>
+          <li><a href="#dishes">活動</a></li>
+          <li><a href="#limited">限定</a></li>
+          <li><a href="#people">團隊</a></li>
+          <li><a href="#join">入會</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━━ -->
+    <header class="hero">
+      <div class="since-badge">
+        <span class="lbl">SINCE</span>
+        <span class="yr">2009</span>
+        <span class="zh">福智校友</span>
+      </div>
+      <div class="hero-inner">
+        <img
+          class="hero-logo"
+          src="images/logo.png"
+          alt="福智校友會"
+          onerror="this.dataset.broken = true"
+        />
+        <div class="leaf-divider">
+          <span class="line"></span>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2C7 6 4 10 4 14c0 4 3 7 8 8 5-1 8-4 8-8 0-4-3-8-8-12zm0 4c2 2 4 5 4 8s-2 5-4 6c-2-1-4-3-4-6s2-6 4-8z"
+            />
+          </svg>
+          <span class="line"></span>
+        </div>
+        <div class="est">EST. 2009 · LICENSED 2024</div>
+        <h1>福智學校校友會</h1>
+        <div class="en-title">BWS Alumni Association</div>
+        <div class="subtitle">
+          一份為畢業生與家人準備的<br />
+          校友家庭介紹手冊
+        </div>
+        <div class="welcome-card">
+          <span class="tag">WELCOME</span>
+          <p>
+            親愛的畢業生、家長:這是我們為你準備的「菜單」──
+            每一道,都是十多年來校友家庭的真心料理。歡迎慢慢翻閱、細細品嚐。
+          </p>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL ↓</div>
+    </header>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 1: STORY ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="story" class="chapter reveal">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · ONE</div>
+        <h2>校友會緣起</h2>
+        <div class="en">Our Story</div>
+        <blockquote>"十年的緣分,有了正式的根。"</blockquote>
+      </div>
+
+      <div class="story-text">
+        <p>
+          福智教育園區創立於
+          <strong>2003</strong> 年,由福智團體創辦人上日下常老和尚創立。<strong
+            >2009</strong
+          >
+          年第一屆學生畢業離開時,為了維繫學生們彼此的連結,以及與校方、福智團體的關係,校友會立即成立。
+        </p>
+        <p>
+          十餘年來,我們舉辦各種大大小小的活動 ──
+          提升營、根本道場巡禮、聚餐、回母校 ── 讓校友彼此認識、互相扶持。
+        </p>
+        <p>
+          2024 年 4 月,在指導法師性展法師的指示下,我們正式向內政部申請立案通過
+          ──「<strong>中華民國福智學校校友會</strong>」──
+          讓這份十年來的緣分,有了正式的根。
+        </p>
+      </div>
+
+      <div class="purpose-divider">OUR PURPOSE · 我們的宗旨</div>
+
+      <div class="purpose-grid">
+        <div class="purpose-card">
+          <div class="num">01</div>
+          <h3>緊密連結</h3>
+          <div class="en-sub">Connection</div>
+          <p>法師、團體、校方與校友之間的緊密結合</p>
+        </div>
+        <div class="purpose-card">
+          <div class="num">02</div>
+          <h3>指引方向</h3>
+          <div class="en-sub">Direction</div>
+          <p>幫助在校生理解未來、設立人生目標</p>
+        </div>
+        <div class="purpose-card">
+          <div class="num">03</div>
+          <h3>優質人脈</h3>
+          <div class="en-sub">Network</div>
+          <p>產業合作、跨界合作與人才招募的機會</p>
+        </div>
+        <div class="purpose-card">
+          <div class="num">04</div>
+          <h3>回饋母校</h3>
+          <div class="en-sub">Giving Back</div>
+          <p>提供母校更廣闊的資源與生員</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 2: DISHES ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="dishes" class="chapter reveal">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · TWO</div>
+        <h2>歷年活動精選</h2>
+        <div class="en">Signature Dishes</div>
+        <blockquote>"十餘年來,大大小小,每一道都是真心。"</blockquote>
+      </div>
+
+      <div class="photo-frame" data-caption="校友提升營 / 憶師恩法會 大合照">
+        <img
+          src="images/group-photo.jpg"
+          alt="校友提升營 / 憶師恩法會 大合照"
+          onerror="
+            this.dataset.broken = true;
+            this.style.display = 'none';
+          "
+        />
+        <div class="placeholder-text">
+          <small>[ PHOTO ]</small>
+          校友提升營 / 憶師恩法會 大合照
+        </div>
+      </div>
+
+      <a
+        class="activity"
+        target="_blank"
+        rel="noopener"
+        href="https://bwsaa.org/improvement-program-2025/"
+      >
+        <div class="activity-head">
+          <div class="activity-title">
+            <svg
+              class="activity-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"
+              />
+            </svg>
+            <h3>校友提升營</h3>
+            <span class="badge">招牌</span>
+          </div>
+          <div class="activity-meta">三日 / 年度</div>
+        </div>
+        <div class="activity-en">Improvement Camp</div>
+        <p class="activity-desc">
+          三天兩夜的廣論研討,在性展法師、性選法師、性愣法師的帶領下,為校友學習廣論的康莊大道開創新的里程碑。
+        </p>
+        <svg
+          class="activity-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <a
+        class="activity"
+        target="_blank"
+        rel="noopener"
+        href="https://bwsaa.org/2025-%e6%86%b6%e5%b8%ab%e6%81%a9%e6%b3%95%e6%9c%83/"
+        ><!-- TODO: 替換為實際 URL -->
+        <div class="activity-head">
+          <div class="activity-title">
+            <svg
+              class="activity-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M12 2L4 7l8 5 8-5-8-5zM4 12l8 5 8-5M4 17l8 5 8-5" />
+            </svg>
+            <h3>憶師恩法會</h3>
+            <span class="badge wine">主廚精選</span>
+          </div>
+          <div class="activity-meta">十月 · 三日</div>
+        </div>
+        <div class="activity-en">Teacher Gratitude</div>
+        <p class="activity-desc">
+          一年一度於高雄巨蛋舉辦,校友會向大會希求專屬區域,讓校友坐在一起共修,並安排法師中午與校友講話。
+        </p>
+        <svg
+          class="activity-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <a
+        class="activity"
+        target="_blank"
+        rel="noopener"
+        href="https://bwsaa.org/winter-hotpot-party/"
+        ><!-- TODO: 替換為實際 URL -->
+        <div class="activity-head">
+          <div class="activity-title">
+            <svg
+              class="activity-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+            </svg>
+            <h3>冬之聚 · 呷鍋會</h3>
+          </div>
+          <div class="activity-meta">冬季限定</div>
+        </div>
+        <div class="activity-en">Winter Hotpot</div>
+        <p class="activity-desc">
+          這個冬天,最暖的不是太陽,是校友們團聚的熱情!一年將盡,在台中昭日堂鍋煮一起開鍋,熱氣與笑聲一起翻騰。
+        </p>
+        <svg
+          class="activity-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <a
+        class="activity"
+        target="_blank"
+        rel="noopener"
+        href="https://bwsaa.org/connecting-hearts-at-year-end/"
+        ><!-- TODO: 替換為實際 URL -->
+        <div class="activity-head">
+          <div class="activity-title">
+            <svg
+              class="activity-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="9" cy="7" r="4" />
+              <circle cx="17" cy="9" r="3" />
+              <path
+                d="M2 21v-2a4 4 0 014-4h6a4 4 0 014 4v2M22 21v-1a3 3 0 00-2.4-2.94"
+              />
+            </svg>
+            <h3>北中南三區校友小聚</h3>
+          </div>
+          <div class="activity-meta">年末 · 全台</div>
+        </div>
+        <div class="activity-en">Regional Gatherings</div>
+        <p class="activity-desc">
+          為剛踏入大學的學弟妹,以及在不同人生階段前行的學長姐,搭起一座重新相遇、彼此連結的橋樑。
+        </p>
+        <svg
+          class="activity-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <a class="activity" target="_blank" rel="noopener">
+        <div class="activity-head">
+          <div class="activity-title">
+            <svg
+              class="activity-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <h3>回母校 · 校友聚餐</h3>
+          </div>
+          <div class="activity-meta">隨喜 · 不定期</div>
+        </div>
+        <div class="activity-en">Homecoming</div>
+        <p class="activity-desc">
+          回到園區那條熟悉的小路、那間熟悉的教室,和老朋友、老師們一起吃一頓飯,說說這幾年。
+        </p>
+        <svg
+          class="activity-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
+
+      <div class="photo-row">
+        <div class="photo-frame" data-caption="提升營側拍">
+          <img
+            src="images/camp.jpg"
+            alt="提升營側拍"
+            onerror="
+              this.dataset.broken = true;
+              this.style.display = 'none';
+            "
+          />
+          <div class="placeholder-text">
+            <small>[ PHOTO ]</small>
+            提升營側拍
+          </div>
+        </div>
+        <div class="photo-frame" data-caption="校友聚餐">
+          <img
+            src="images/gathering.jpg"
+            alt="校友聚餐"
+            onerror="
+              this.dataset.broken = true;
+              this.style.display = 'none';
+            "
+          />
+          <div class="placeholder-text">
+            <small>[ PHOTO ]</small>
+            校友聚餐
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 3: LIMITED ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="limited" class="chapter reveal">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · THREE</div>
+        <h2>校友限定 · 季節商品</h2>
+        <div class="en">Limited Edition</div>
+        <blockquote>"一張卡,一段青春的倒影。"</blockquote>
+      </div>
+
+      <div class="product-card">
+        <div class="photo-frame" data-caption="福智特製悠遊卡">
+          <img
+            src="images/easycard.jpg"
+            alt="福智特製悠遊卡"
+            onerror="
+              this.dataset.broken = true;
+              this.style.display = 'none';
+            "
+          />
+          <div class="placeholder-text">
+            <small>[ PHOTO ]</small>
+            悠遊卡
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="badge">限量 · 熱銷</span>
+          <h3>福智特製悠遊卡</h3>
+          <div class="en">Easycard · Class of Memories</div>
+          <p>
+            每個人的錢包裡,總有些凌亂,卻也自有秩序;就像青春,看似隨性,卻藏著無數回憶的線索。
+          </p>
+        </div>
+      </div>
+
+      <div class="more-soon">※ 更多紀念商品將陸續登場 · 敬請期待</div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 4: PEOPLE ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="people" class="chapter reveal">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · FOUR</div>
+        <h2>主廚團隊</h2>
+        <div class="en">The People Behind</div>
+        <blockquote>"一群仍在用心料理這個家的人。"</blockquote>
+      </div>
+
+      <div class="people-table">
+        <div class="person-row">
+          <div class="num">01</div>
+          <div class="person-info">
+            <div class="role">指導法師</div>
+            <div class="name">性展法師</div>
+          </div>
+          <div class="en-role">Spiritual Advisor</div>
+        </div>
+        <div class="person-row">
+          <div class="num">02</div>
+          <div class="person-info">
+            <div class="role">理事長</div>
+            <div class="name tbd">— · 林政璋</div>
+          </div>
+          <div class="en-role">Chairperson</div>
+        </div>
+        <div class="person-row">
+          <div class="num">03</div>
+          <div class="person-info">
+            <div class="role">秘書長</div>
+            <div class="name tbd">— · 楊翔閔</div>
+          </div>
+          <div class="en-role">Vice Chair</div>
+        </div>
+        <div class="person-row">
+          <div class="num">04</div>
+          <div class="person-info">
+            <div class="role">行政部長</div>
+            <div class="name tbd">— · 江劭剛</div>
+          </div>
+          <div class="en-role">Standing Director</div>
+        </div>
+        <div class="person-row">
+          <div class="num">05</div>
+          <div class="person-info">
+            <div class="role">活動部長</div>
+            <div class="name tbd">— · 林治均</div>
+          </div>
+          <div class="en-role">Supervisor</div>
+        </div>
+      </div>
+
+      <div class="board-link">
+        完整理監事名單請見
+        <a href="https://bwsaa.org/board-members" target="_blank" rel="noopener"
+          >bwsaa.org/board-members</a
+        >
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 5: JOIN ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="join" class="chapter reveal join-section">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · FIVE</div>
+        <h2>加入這個家</h2>
+        <div class="en">Join the Table</div>
+        <blockquote>"這張長桌,我們一直都為你留著一個位子。"</blockquote>
+      </div>
+
+      <div class="join-card">
+        <div class="join-title">MEMBERSHIP · 入 會 · 禮 遇</div>
+        <ul class="join-list">
+          <li>參與校友提升營、憶師恩、聚餐等所有活動</li>
+          <li>取得校友限定商品的優先購買資格</li>
+          <li>與不同屆別的學長姐、學弟妹建立連結</li>
+          <li>接收最新活動快訊與電子報</li>
+          <li>成為校友互助圈的一份子,給予也接受</li>
+        </ul>
+        <a
+          href="https://bwsaa.org/membership-application/"
+          target="_blank"
+          rel="noopener"
+          class="cta-button"
+        >
+          線 上 入 會 申 請
+          <span class="en">BWSAA.ORG / MEMBERSHIP</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CH 6: CONTACT ━━━━━━━━━━━━━━━━━━━ -->
+    <section id="contact" class="chapter reveal">
+      <div class="chapter-head">
+        <div class="num">CHAPTER · SIX</div>
+        <h2>訂位 · 外帶 · 找我們</h2>
+        <div class="en">Stay in Touch</div>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:bwshalumni@gmail.com">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7a2 2 0 012-2h14a2 2 0 012 2"
+            />
+          </svg>
+          <div class="label">EMAIL</div>
+          <h3>Email</h3>
+          <p>bwshalumni@gmail.com</p>
+        </a>
+
+        <a
+          class="contact-card"
+          href="https://www.facebook.com/profile.php?id=100072218301878"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+            />
+          </svg>
+          <div class="label">FACEBOOK</div>
+          <h3>Facebook</h3>
+          <p>@福智學校校友會</p>
+        </a>
+
+        <a
+          class="contact-card"
+          href="https://www.instagram.com/bwsh_alumni/"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.7" fill="currentColor" />
+          </svg>
+          <div class="label">INSTAGRAM</div>
+          <h3>Instagram</h3>
+          <p>@bwsh_alumni</p>
+        </a>
+
+        <a
+          class="contact-card"
+          href="https://bwsaa.org"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+          </svg>
+          <div class="label">WEB</div>
+          <h3>官方網站</h3>
+          <p>bwsaa.org</p>
+        </a>
+      </div>
+
+      <div class="note-bar">
+        <span class="lbl">NOTE</span>
+        中華民國福智學校校友會 · 2024 年 4 月正式立案
+      </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━ CLOSING ━━━━━━━━━━━━━━━━━━━ -->
+    <div class="closing reveal">
+      <div class="leaves">𝓦 𝓦 𝓦</div>
+      <h3>恭喜畢業 · 歡迎回家</h3>
+      <p>無論你走到哪裡<br />這張長桌,永遠為你留著一個位子。</p>
+      <div class="bon">BON APPÉTIT</div>
+    </div>
+
+    <footer>© 2025 中華民國福智學校校友會 · bwsaa.org</footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <img src="" alt="" id="lightbox-img" />
+      <div class="caption" id="lightbox-caption"></div>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      const toggle = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("navmenu");
+      toggle?.addEventListener("click", () => menu.classList.toggle("open"));
+      menu
+        .querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => menu.classList.remove("open")),
+        );
+
+      // Reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Active nav highlight
+      const sections = document.querySelectorAll("section.chapter");
+      const navLinks = document.querySelectorAll("nav.top a");
+      const setActive = () => {
+        let current = "";
+        const offset = window.scrollY + 120;
+        sections.forEach((s) => {
+          if (s.offsetTop <= offset) current = s.id;
+        });
+        navLinks.forEach((a) => {
+          a.classList.toggle(
+            "active",
+            a.getAttribute("href") === "#" + current,
+          );
+        });
+      };
+      window.addEventListener("scroll", setActive, { passive: true });
+
+      // Lightbox for photos
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      const lbCap = document.getElementById("lightbox-caption");
+      document.querySelectorAll(".photo-frame").forEach((frame) => {
+        frame.addEventListener("click", () => {
+          const img = frame.querySelector("img");
+          if (
+            !img ||
+            img.dataset.broken ||
+            !img.complete ||
+            img.naturalWidth === 0
+          )
+            return;
+          lbImg.src = img.src;
+          lbCap.textContent = frame.dataset.caption || "";
+          lb.classList.add("active");
+        });
+      });
+      lb.addEventListener("click", () => lb.classList.remove("active"));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") lb.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
